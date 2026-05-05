@@ -44,11 +44,12 @@ function FoodList({ foods, restaurant }) {
           </thead>
           <tbody>
             {rows && rows.map((food, index) => (
-              <tr key={index}>
+              index % 3 === 0 && (
+              <tr key={index} >
                 <td><FoodCard food={rows[index]} restaurantId={restaurant} /></td>
                 <td><FoodCard food={rows[index + 1]} restaurantId={restaurant} /></td>
                 <td><FoodCard food={rows[index + 2]} restaurantId={restaurant} /></td>
-              </tr>
+              </tr>)
           ))}
         </tbody>
       </table>
