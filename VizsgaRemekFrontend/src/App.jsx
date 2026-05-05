@@ -9,6 +9,9 @@ function App() {
   const navigate = useNavigate();
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
+  addEventListener("storage", (onload) => {
+    windiw.location.reload();
+  }) 
 
   useEffect(() => {
     const loadRestaurants = async () => {
