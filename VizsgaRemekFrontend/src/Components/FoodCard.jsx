@@ -6,6 +6,9 @@ import { useContext } from "react";
 import { UserContext } from "../UserClaim";
 
 export const FoodCard = ({ food, restaurantId }) => {
+  if (!food) {
+    return null;
+  }
   const { userRole } = useContext(UserContext) || {};
   const navigate = useNavigate();
   const {CartItems, setCartItems ,quantity, setQuantity, foodId, setFoodId} = useContext(CartContext);
@@ -26,10 +29,7 @@ export const FoodCard = ({ food, restaurantId }) => {
     })
   };
   console.log("food in FoodCard:", CartItems);
-  
-  if (!food) {
-    return null;
-  }
+  console.log("foodId in FoodCard:", food.publicId);
   return (
     <div className="food-card" style={{ backgroundImage: `url(${food.imageUrl})` }}>
       <div className="food-info">
@@ -44,7 +44,7 @@ export const FoodCard = ({ food, restaurantId }) => {
           Ár: {food.price} Ft
         </p>
         <button onClick={addCart}>Kosárba</button>
-        <button disabled={userRole !== "ADMIN"} onClick={() => navigate(`/edit/${restaurantId}`)} id="#editres">Szerkesztés</button>
+        <button style={{display: userRole !== "Admin" ? 'none' : 'flex'}} onClick={() => navigate(`/foodedit/${food.publicId}`)} id="#editres">Szerkesztés</button>
       </div>
     </div>
   );

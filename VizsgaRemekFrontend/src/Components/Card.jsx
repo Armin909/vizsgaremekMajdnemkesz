@@ -1,8 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../UserClaim";
+
 
 export const Card = ({ data, buttons = [] }) => {
   const navigate = useNavigate();
+  const { userRole } = useContext(UserContext) || {};
 
   if (!data) {
     return null;
@@ -23,7 +27,7 @@ export const Card = ({ data, buttons = [] }) => {
         <p className="restaurant-address">Cím: {data.address}</p>
         <p className="restaurant-category">Kategória: {data.category}</p>
         {buttons.map((button, index) => (
-          <button key={index} onClick={() => navigate(button.path)}>
+          <button /*style={{display: userRole !== "ADMIN" ? 'none' : 'flex'}}*/ key={index} onClick={() => navigate(button.path)}>
             {button.label}
           </button>
         ))}

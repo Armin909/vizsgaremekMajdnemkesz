@@ -14,6 +14,8 @@ import ReviewForm from './Components/ReviewForm.jsx';
 import { CartProvider } from './CartItems.jsx';
 import Payment from './Payment.jsx';
 import FoodForm from './Components/FoodForm.jsx';
+import RestaurantEdit from './Components/RestaurantEdit.jsx';
+import FoodEdit from './Components/FoodEdit.jsx';
 
 const orederList=[];
 
@@ -27,7 +29,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/home" element={<App />} />
           <Route path="/create" element={<Create />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/edit/:id" element={<Create />} />
+          <Route path="/editRestaurant/:id" element={<RestaurantEdit />} />
           <Route path="/rendel/:id" element={<Restaurant />} />
           <Route path="/reviews/:id" element={<Reviews />} />
           <Route path="/reviewcreate/:id" element={<ReviewForm />} />
@@ -35,6 +37,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/userclaim" element={<UserClaim />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/foodcreate/:id" element={<FoodForm />} />
+          <Route path="/foodedit/:id" element={<FoodEdit />} />
         </Routes>
         </UserClaim>
       </CartProvider>

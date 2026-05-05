@@ -40,7 +40,6 @@ const LogIn = () => {
         throw new Error("Nincs token a válaszban");
       }
       
-      alert("Login successful");
       navigate('/home');
     } catch (err) {
       console.error(err);
@@ -50,7 +49,8 @@ const LogIn = () => {
 
   return (
     <div>
-      <h2>LogIn</h2>
+      <h2>KajaHaza</h2>
+      <h3>Üdvozöljük!</h3>
       <form onSubmit={handleSubmit}>
         <label>
           Username:

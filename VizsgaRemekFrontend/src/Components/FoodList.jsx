@@ -37,7 +37,7 @@ function FoodList({ foods, restaurant }) {
         <table>
           <thead>
             <tr>
-              <th><button disabled={userRole !== "ADMIN"} id="CreateRes" onClick={ÚjÉtelek}>Új étel  </button></th>
+              <th><button style={{display: userRole !== "ADMIN" ? 'none' : 'flex'}} id="CreateRes" onClick={ÚjÉtelek}>Új étel  </button ></th>
               <th><><button onClick={Vélyemények}>Vélyemények</button></></th>
               <th><button onClick={() => navigation(`/reviewcreate/${restaurant}`)}>Vélemény írása</button></th>
             </tr>

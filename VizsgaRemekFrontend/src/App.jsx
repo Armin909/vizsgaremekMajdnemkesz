@@ -55,10 +55,10 @@ function App() {
   return (
     <>
       <header>
-        <h1>🍽️ FoodOrder</h1>
+        <h1>🍽️ KajaHaza</h1>
         <div>
           <button onClick={() => navigate(`/userclaim`)}>User Claim</button>
-          <button onClick={() => navigate(`/cart`)}>Kosár</button>
+          <button onClick={() => navigate(`/cart`)}>🛒</button>
           <button onClick={LogOut}>Kijelentkezés</button>
         </div>
       </header>

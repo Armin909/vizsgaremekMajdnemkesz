@@ -2,38 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-
-/*
-const restaurantById = () => {
-  const [restaurant, setRestaurant] = useState(null);
-  const [error, setError] = useState(null);
-  const id = window.location.pathname.split("/").pop();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchRestaurant = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/api/Restaurant/${id}`);
-        if (!response.ok) {
-          throw new Error("Étterem nem található");
-          console.error("Fetch failed:", response.status);
-        }
-        const data = await response.json();
-        setRestaurant(data);
-      } catch (err) {
-        console.error(err);
-        setError(err.message);
-        alert(err.message);
-        
-      }
-    };
-
-    fetchRestaurant();
-  }, [id, navigate]);
-
-  return restaurant;
-};
-*/
 const RestaurantForm = () => {
   const editData = /*restaurantById()*/ null;
   const initial = {
@@ -42,7 +10,7 @@ const RestaurantForm = () => {
     phone: editData?.phone || "",
     openingHours: editData?.openingHours || "",
     category: editData?.category || "",
-    image: editData?.image || ""
+    restaurantImageUrl: editData?.image || ""
   };
   const navigate = useNavigate();
 
@@ -70,7 +38,7 @@ const RestaurantForm = () => {
       }
       setRestaurant(initial);
       // optionally navigate or show success message
-      alert("Restaurant created");
+      navigate('/home');
     } catch (err) {
       console.error(err);
       alert(err.message || "Hiba történt");
@@ -83,7 +51,7 @@ const RestaurantForm = () => {
         <button onClick={() => navigate(-1)}>Back</button>
     </header>
     <div>
-      <h2>RestaurantForm</h2>
+      <h2>Étterem Létrehozása</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Név:

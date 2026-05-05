@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../UserClaim";
 
 function AddFood() {
   const [food, setFood] = useState({
@@ -9,8 +11,9 @@ function AddFood() {
     category: "",
     imageUrl: "",
   });
+  const navigate = useNavigate();
   const addFood = async (restaurantPublicId, foodData) => {
-    
+  
   const token = localStorage.getItem("token");
 
   const response = await fetch(
@@ -57,7 +60,6 @@ function AddFood() {
 
     try {
       const result = await addFood(restaurantPublicId, food);
-      alert(result.message || "Étel sikeresen hozzáadva!");
 
       setFood({
         name: "",
@@ -66,60 +68,49 @@ function AddFood() {
         category: "",
         imageUrl: "",
       });
+      navigate(`/restaurant/${restaurantPublicId}`);
     } catch (error) {
       alert(error.message);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Étel neve"
-        value={food.name}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <input
-        type="text"
-        name="description"
-        placeholder="Leírás"
-        value={food.description}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <input
-        type="number"
-        name="price"
-        placeholder="Ár"
-        value={food.price}
-        onChange={handleChange}
-        required
-      />
-<br />
-      <input
-        type="text"
-        name="category"
-        placeholder="Kategória"
-        value={food.category}
-        onChange={handleChange}
-        required
-      />
-<br />
-      <input
-        type="text"
-        name="imageUrl"
-        placeholder="Kép URL"
-        value={food.imageUrl}
-        onChange={handleChange}
-        required
-      />
-<br />
-      <button type="submit">Étel hozzáadása</button>
-    </form>
+    <>
+    <header>
+        <button onClick={() => navigate(-1)}>Back</button>
+    </header>
+    <div>
+      <h2>Étel létrehozása</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Név:
+          <input type="text" name="name" value={food.name} onChange={handleChange} />
+        </label>
+        <br />
+        <label>
+          Leírás:
+          <input type="text" name="description" value={food.description} onChange={handleChange} />
+        </label>
+        <br />
+        <label>
+          Ár:
+          <input type="number" name="price" value={food.price} onChange={handleChange} />
+        </label>
+        <br />
+        <label>
+          Kategória:
+          <input type="text" name="category" value={food.category} onChange={handleChange} />
+        </label>
+        <br />
+        <label>
+          Kép:
+          <input type="text" name="imageUrl" value={food.imageUrl} onChange={handleChange} />
+        </label>
+        <br />
+        <button type="submit" onClick={handleSubmit}>Küldés</button>
+      </form>
+    </div>
+    </>
   );
 }
 

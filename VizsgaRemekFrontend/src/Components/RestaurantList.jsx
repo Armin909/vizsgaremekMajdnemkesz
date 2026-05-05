@@ -30,7 +30,7 @@ const decoded = token ? jwtDecode(token) : null;
         <table>
           <thead>
             <tr>
-              <th><button disabled={userRole !== "ADMIN"} id="CreateRes" onClick={jumpToNewRestaurants}>Új étterem</button></th>
+              <th><button style={{display: userRole !== "Admin" ? 'none' : 'flex'}} id="CreateRes" onClick={jumpToNewRestaurants}>Új étterem</button></th>
               <th></th>
               <th></th>
             </tr>
@@ -38,12 +38,12 @@ const decoded = token ? jwtDecode(token) : null;
           <tbody>
             {rows.map((row, rowIndex) => (
               <tr key={rowIndex}>
-                <td><Card data={row[0]} buttons={[{label:"Rendelés", path:`/rendel/${row[0]?.publicId}`},{label:"Szerkesztés", path:`/edit/${row[0]?.publicId}`}]} /></td>
-                <td><Card data={row[1]} buttons={[{label:"Rendelés", path:`/rendel/${row[1]?.publicId}`},{label:"Szerkesztés", path:`/edit/${row[1]?.publicId}`}]} /></td>
-                <td><Card data={row[2]} buttons={[{label:"Rendelés", path:`/rendel/${row[2]?.publicId}`},{label:"Szerkesztés", path:`/edit/${row[2]?.publicId}`}]} /></td>
-            </tr>
-          ))}
-        </tbody>
+                <td><Card data={row[0]} buttons={[{label:"Rendelés", path:`/rendel/${row[0]?.publicId}`}, ...(userRole === "Admin" ? [{label:"Szerkesztés", path:`/editRestaurant/${row[0]?.publicId}`} ] : [])]} /></td>
+                <td><Card data={row[1]} buttons={[{label:"Rendelés", path:`/rendel/${row[1]?.publicId}`}, ...(userRole === "Admin" ? [{label:"Szerkesztés", path:`/editRestaurant/${row[1]?.publicId}`} ] : [])]} /></td>
+                <td><Card data={row[2]} buttons={[{label:"Rendelés", path:`/rendel/${row[2]?.publicId}`}, ...(userRole === "Admin" ? [{label:"Szerkesztés", path:`/editRestaurant/${row[2]?.publicId}`} ] : [])]} /></td>
+              </tr>
+            ))}
+          </tbody>
       </table>
       </>
     )

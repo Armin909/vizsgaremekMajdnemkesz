@@ -33,7 +33,7 @@ const Cart = () => {
 
   return (
     <div>
-      <h2>Shopping Cart</h2>
+      <h2>Kosár</h2>
       <button disabled={cartItems.length === 0} onClick={orderCreate}>Fizetés</button>
       <button onClick={() => navigate(-1)}>Vissza</button>
       {cartItems.length === 0 ? (

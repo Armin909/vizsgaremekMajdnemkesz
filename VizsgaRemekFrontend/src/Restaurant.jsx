@@ -52,7 +52,7 @@ const Restaurant = (restaurant) => {
     <div>
       <div>
       <button onClick={() => navigate(-1)}>Vissza</button>
-      <button onClick={() => navigate(`/cart`)}>Kosár</button>
+      <button onClick={() => navigate(`/cart`)}>🛒</button>
       </div>
       <FoodList foods={foods} restaurant={restaurantId} />
     </div>

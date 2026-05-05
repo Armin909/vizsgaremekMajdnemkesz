@@ -5,7 +5,7 @@ import { data, useNavigate } from 'react-router-dom';
 
 
 const Payment = () => {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, setCartItems } = useContext(CartContext);
     const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
     const navigate = useNavigate();
    
@@ -32,6 +32,9 @@ const Payment = () => {
                     //body: JSON.stringify([{ "foodpublicId": `${response.publicId}`, "pointsToUse":0 }])
                     
                 });
+                alert("Sikeres fizetés!");
+                setCartItems([]);
+                //navigate('/');
             } catch (error) {
                 console.error("Payment error:", error);
         
