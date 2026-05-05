@@ -7,7 +7,7 @@ import { UserContext } from '../UserClaim';
   
 
 function FoodList({ foods, restaurant }) {
-  const { userRole } = useContext(UserContext) || {};
+  
     const navigation = useNavigate();
     const [rows, setRows] = useState([]);
 
@@ -30,14 +30,14 @@ function FoodList({ foods, restaurant }) {
     }, [restaurant]);
     console.log("restaurant in FoodList:", restaurant);
 
-    
+    const { userRole } = useContext(UserContext) || {};
     return (
       <>
       
         <table>
           <thead>
             <tr>
-              <th><button disabled={userRole!=="ADMIN"} id="CreateRes" onClick={ÚjÉtelek}>Új étel  </button></th>
+              <th><button disabled={userRole !== "ADMIN"} id="CreateRes" onClick={ÚjÉtelek}>Új étel  </button></th>
               <th><><button onClick={Vélyemények}>Vélyemények</button></></th>
               <th><button onClick={() => navigation(`/reviewcreate/${restaurant}`)}>Vélemény írása</button></th>
             </tr>

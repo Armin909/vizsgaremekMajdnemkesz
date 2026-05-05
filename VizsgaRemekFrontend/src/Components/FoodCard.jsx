@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CartContext } from "../CartItems";
 import { useContext } from "react";
+import { UserContext } from "../UserClaim";
 
 export const FoodCard = ({ food, restaurantId }) => {
+  const { userRole } = useContext(UserContext) || {};
   const navigate = useNavigate();
   const {CartItems, setCartItems ,quantity, setQuantity, foodId, setFoodId} = useContext(CartContext);
   const addCart = async (e) => {
@@ -42,7 +44,7 @@ export const FoodCard = ({ food, restaurantId }) => {
           Ár: {food.price} Ft
         </p>
         <button onClick={addCart}>Kosárba</button>
-        <button style={{opacity: 1.0}} onClick={() => navigate(`/edit/${restaurantId}`)} id="#editres">Szerkesztés</button>
+        <button disabled={userRole !== "ADMIN"} onClick={() => navigate(`/edit/${restaurantId}`)} id="#editres">Szerkesztés</button>
       </div>
     </div>
   );
