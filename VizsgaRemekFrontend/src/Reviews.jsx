@@ -14,7 +14,7 @@ const Reviews = () => {
             try {
                 console.log('Review ID:', reviewId);
                 
-                const url =  `http://localhost:3000/api/Review/allReview?restaurantPubId=${reviewId}`;
+                const url =  `https://localhost:4000/api/Review/allReview?restaurantPubId=${reviewId}`;
                 console.log('Fetching from:', url);
                 const response = await fetch(url);
                 

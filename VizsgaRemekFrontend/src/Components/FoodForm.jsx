@@ -17,7 +17,7 @@ function AddFood() {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-   `http://localhost:3000/api/Foods/restaurants/${restaurantPublicId}/foods`,
+   `https://localhost:3000/api/Foods/restaurants/${restaurantPublicId}/foods`,
     {
       method: "POST",
       headers: {

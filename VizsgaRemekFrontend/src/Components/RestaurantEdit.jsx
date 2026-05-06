@@ -13,7 +13,7 @@ const restaurantById = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/Restaurant/GetRestaurant/${id}`);
+        const response = await fetch(`https://localhost:4000/api/Restaurant/GetRestaurant/${id}`);
         if (!response.ok) {
           throw new Error("Étterem nem található");
           console.error("Fetch failed:", response.status);
@@ -57,7 +57,7 @@ const RestaurantEdit = (restaurantId) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/api/Restaurant/updateRestaurant/${restaurantId}`, {
+      const response = await fetch(`https://localhost:4000/api/Restaurant/updateRestaurant/${restaurantId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json",
           "Authorization": `Bearer ${localStorage.getItem("token")}`

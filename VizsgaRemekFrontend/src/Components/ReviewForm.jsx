@@ -54,7 +54,7 @@ const ReviewForm = (restaurant) => {
       console.log('Submitting review:', requestBody);
       console.log('Token:', token);
       
-      const response = await fetch(`http://localhost:3000/api/Review/createReview`, {
+      const response = await fetch(`https://localhost:4000/api/Review/createReview`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -76,7 +76,6 @@ const ReviewForm = (restaurant) => {
         rating: '',
         comment: '',
       });
-      alert("Review created");
     } catch (err) {
       console.error('Error:', err);
       alert(err?.message || "Hiba történt");

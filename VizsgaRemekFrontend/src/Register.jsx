@@ -16,7 +16,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch("https://localhost:4000/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({name, username, email, phone, password })
@@ -49,32 +49,32 @@ const Register = () => {
           Name:
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </label>
-        <br />
+
         <label>
           Username:
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
-        <br />
+
         <label>
           Phone:
           <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
         </label>
-        <br />
+
         <label>
           Email:
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
-        <br />
+
         <label>
           Password:
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
-        <br />
+
         <label>
           Confirm Password:
           <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </label>
-        <br />
+
         <button type="submit">Register</button>
       </form>
     </div>

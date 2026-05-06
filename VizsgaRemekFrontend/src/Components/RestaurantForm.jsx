@@ -24,7 +24,7 @@ const RestaurantForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/Restaurant/createRestaurant", {
+      const response = await fetch("https://localhost:4000/api/Restaurant/createRestaurant", {
         method: "POST",
         headers: { "Content-Type": "application/json",
           "Authorization": `Bearer ${localStorage.getItem("token")}`

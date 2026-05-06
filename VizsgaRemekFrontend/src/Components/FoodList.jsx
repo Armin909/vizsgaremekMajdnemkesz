@@ -20,7 +20,7 @@ function FoodList({ foods, restaurant }) {
     }
 
     useEffect(() => {
-      fetch(`http://localhost:3000/api/Restaurant/getRestaurant/${restaurant}`)
+      fetch(`https://localhost:4000/api/Restaurant/getRestaurant/${restaurant}`)
       .then(res => res.json())
       .then(data => {
         setRows(data.foods);

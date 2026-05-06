@@ -13,7 +13,7 @@ const useFoodById = (id) => {
     const fetchFood = async () => {
         console.log("Fetching food with ID:", id);
       try {
-        const response = await fetch(`http://localhost:3000/api/Foods/${id}`, {
+        const response = await fetch(`https://localhost:3000/api/Foods/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function FoodEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/api/Foods/${id}`, {
+      const response = await fetch(`https://localhost:3000/api/Foods/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json",
           "Authorization": `Bearer ${localStorage.getItem("token")}`

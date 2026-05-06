@@ -11,7 +11,7 @@ const Payment = () => {
    
     
     const handlePayment = async () => {
-        const response = await fetch("http://localhost:3000/api/Orders", {
+        const response = await fetch("https://localhost:4000/api/Orders", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const Payment = () => {
 
         const orderPaying=async()=>{
             try {
-                const pay = await fetch(`http://localhost:3000/api/Orders/${data[0].publicId}/checkout?pointsToUse=0`,{
+                const pay = await fetch(`https://localhost:4000/api/Orders/${data[0].publicId}/checkout?pointsToUse=0`,{
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
